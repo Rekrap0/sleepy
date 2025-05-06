@@ -22,7 +22,7 @@
         <div class="card light" id="user_status">
             <h1>在线状态</h1>
 
-            <h3><i><b>{{ env.page.user }}'s</b></i> Status:<br><a id="status">{{ status['name'] }}</a></h3>
+            <h3><b>{{ env.page.user }}</b> 现在:<br><a id="status">{{ status['name'] }}</a></h3>
             <p id="additional-info">{{ status['desc'] | safe }}</p>
             <p id="device-status">[设备状态列表]</p>
 
