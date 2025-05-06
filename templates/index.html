@@ -20,9 +20,9 @@
 <body>
     <div class="container">
         <div class="card light" id="user_status">
-            <h1>在线状态</h1>
+            <h1></h1>
 
-            <h3><b>{{ env.page.user }}</b> 现在:<br><a id="status">{{ status['name'] }}</a></h3>
+            <h3><b>{{ env.page.user }}</b> 现在:<a id="status">{{ status['name'] }}</a></h3>
             <p id="additional-info">{{ status['desc'] | safe }}</p>
             <p id="device-status">[设备状态列表]</p>
 
@@ -35,11 +35,8 @@
         </div>
 
         
+        
     </div>
-    {% if env.page.canvas %}
-    <!-- (canvas) 粒子效果 -->
-    <script src="{{ url_for('static', filename='canvas.js') }}" defer></script>
-    {% endif %}
 
     <script>
         document.getElementById('status').classList.add("{{ status['color'] }}");
