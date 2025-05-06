@@ -82,7 +82,7 @@ function updateElement(data) {
     }
 
     // 更新设备状态
-    var deviceStatus = '<hr/>';
+    var deviceStatus = '<hr/><b><p id="device-status"></p></b>';
     const devices = Object.values(data.device);
 
     for (let device of devices) {
