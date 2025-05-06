@@ -22,11 +22,6 @@
         <div class="card light" id="user_status">
             <h1>在线状态</h1>
 
-            {% if env.page.moonlight %}
-            <!-- (moonlight) 透明度 / 暗色模式 -->
-            {% include "moonlight.html" %}
-            {% endif %}
-
             <h3><i><b>{{ env.page.user }}'s</b></i> Status:<br><a id="status">{{ status['name'] }}</a></h3>
             <p id="additional-info">{{ status['desc'] | safe }}</p>
             <p id="device-status">[设备状态列表]</p>

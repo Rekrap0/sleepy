@@ -88,11 +88,7 @@ div p {
     inset 0 0 6px 1px rgb(185 210 216 / 10%);
   transition: all 0.5s;
 }
-.card:hover {
-  transition: all 0.3s;
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(206, 140, 210, 0.2);
-}
+
 .glass {
   height: 200px;
 }
