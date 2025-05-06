@@ -82,7 +82,7 @@ function updateElement(data) {
     }
 
     // 更新设备状态
-    var deviceStatus = '<hr/><b><p id="device-status"><i>Device</i> Status</p></b>';
+    var deviceStatus = '<hr/><b><p id="device-status"></p></b>';
     const devices = Object.values(data.device);
 
     for (let device of devices) {
@@ -109,7 +109,7 @@ ${sliceText(escapedAppName, data.device_status_slice)}
         deviceStatus += `${escapeHtml(device.show_name)}: ${device_app} <br/>`;
     }
 
-    if (deviceStatus == '<hr/><b><p id="device-status"><i>Device</i> Status</p></b>') {
+    if (deviceStatus == '<hr/><b><p id="device-status"></p></b>') {
         deviceStatus = '';
     }
 
