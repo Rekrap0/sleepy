@@ -20,28 +20,27 @@
 <body>
     <div class="container">
         <div class="card light" id="user_status">
+            <h1></h1>
+
             <h3><b>{{ env.page.user }}</b> 现在:<a id="status">{{ status['name'] }}</a></h3>
             <p id="additional-info">{{ status['desc'] | safe }}</p>
+            <p id="device-status">[设备状态列表]</p>
 
             {% if env.util.steam_enabled %}
             <!-- (steam) Steam 状态模块 (iframe) -->
             {% include "steam.html" %}
             {% endif %}
-            
-            {% if last_updated.year == 1970 %}
-            <p id="last-updated">更新失败</p>
-            {% else %}
-            <p id="last-updated">最后更新: {{ last_updated }} (悉尼时间)</p>
-            {% endif %}
-            <p id="device-status">[设备状态列表]</p>
+
+            <p id="last-updated">最后更新: {{ last_updated }}</p>
         </div>
 
         
+        
     </div>
-    {% if env.page.canvas %}
+    {% comment %} {% if env.page.canvas %}
     <!-- (canvas) 粒子效果 -->
     <script src="{{ url_for('static', filename='canvas.js') }}" defer></script>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
     <script>
         document.getElementById('status').classList.add("{{ status['color'] }}");
