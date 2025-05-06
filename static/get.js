@@ -118,17 +118,19 @@ ${sliceText(escapedAppName, data.device_status_slice)}
         deviceStatusElement.innerHTML = deviceStatus;
     }
 
-    // 更新最后更新时间
-    const timenow = getFormattedDate(new Date());
-    if (lastUpdatedElement) {
-        lastUpdatedElement.innerHTML = `
+// 更新最后更新时间
+const timenow = getFormattedDate(new Date());
+if (lastUpdatedElement) {
+    // 检查是否是 1970 年（Unix 时间起点）
+    const isFailedUpdate = data.last_updated.includes("1970");
+    
+    lastUpdatedElement.innerHTML = `
 最后更新:
 <a class="awake" 
 title="服务器时区: ${data.timezone}" 
-href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${data.last_updated}\\n服务端时区: ${data.timezone}')">
-${data.last_updated}
+href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${isFailedUpdate ? '更新失败' : data.last_updated}\\n服务端时区: ${data.timezone}')">
+${isFailedUpdate ? '即将更新' : data.last_updated}
 </a>`;
-    }
 }
 
 // 全局变量 - 重要：保证所有函数可访问
