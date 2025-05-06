@@ -75,14 +75,12 @@ div p {
 .card {
   border-radius: 30px;
   padding: 2rem 1rem;
-  margin: 1rem auto;
   font-size: 1.1em;
-  width: 40%;
+  height: 100%;
+  width: 100%;
   text-align: center;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   box-shadow: 0 8px 32px rgb(174 137 245 / 20%),
     inset 0 0 6px 1px rgb(185 210 216 / 10%);
@@ -114,7 +112,8 @@ div p {
     touch-action: pan-y;
   }
   .card {
-    width: 90%;
+    height: 100%;
+    width: 100%;
   }
 }
 .sleeping {
