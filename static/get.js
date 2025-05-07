@@ -99,8 +99,8 @@ function updateElement(data) {
         let batteryInfo = " ";
         if (escapedAppName.includes("🔋") || escapedAppName.includes("⚡️")){
             var parts = escapedAppName.split("\u0001")
-            escapedAppName = parts[0]
-            batteryInfo = parts[1]
+            escapedAppName = parts[1]
+            batteryInfo = parts[0]
         }
         if (device.using) {
             const jsShowName = escapeJs(device.show_name);
@@ -120,7 +120,7 @@ ${sliceText(escapedAppName, data.device_status_slice)}
 ${sliceText(escapedAppName, data.device_status_slice)}
 </a>`
         }
-        deviceStatus += `<tr><th>${escapeHtml(device.show_name)}${batteryInfo}</th><th>${device_app}</th><tr/>`;
+        deviceStatus += `<tr><th>${escapeHtml(device.show_name)}</th><th>${batteryInfo}</th><th>${device_app}</th><tr/>`;
     }
 
     if (deviceStatus == '<hr/><b><p id="device-status"></p></b><table>') {
