@@ -91,6 +91,9 @@ div p {
   font-size: 1.1em;
   margin: 1rem;
 }
+.card table{
+  margin: 0 auto;
+}
 .container {
   flex: 1;
   display: flex;
