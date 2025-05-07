@@ -97,7 +97,7 @@ function updateElement(data) {
         let device_app;
         let escapedAppName = escapeHtml(device.app_name);
         let batteryInfo = " ";
-        if (escapedAppName.contains("🔋") || escapedAppName.contains("⚡️")){
+        if (escapedAppName.includes("🔋") || escapedAppName.includes("⚡️")){
             var parts = escapedAppName.split(" \u0001 ")
             escapedAppName = parts[0]
             batteryInfo = parts[1]
