@@ -71,6 +71,7 @@ function updateElement(data) {
     */
     const statusElement = document.getElementById('status');
     const lastUpdatedElement = document.getElementById('last-updated');
+    const devices = Object.values(data.device);
 
     // 更新状态
     if (statusElement) {
@@ -80,10 +81,17 @@ function updateElement(data) {
         statusElement.classList.remove(last_status);
         statusElement.classList.add(data.info.color);
     }
+    
+    if (devices.length == 0){
+        statusElement.textContent = "离线";
+        document.getElementById('additional-info').innerHTML = "没有设备在线…";
+        let last_status = statusElement.classList.item(0);
+        statusElement.classList.remove(last_status);
+        statusElement.classList.add("sleeping");
+    }
 
     // 更新设备状态
     var deviceStatus = '<hr/><b><p id="device-status"></p></b>';
-    const devices = Object.values(data.device);
 
     for (let device of devices) {
         let device_app;
@@ -128,6 +136,15 @@ title="服务器时区: ${data.timezone}"
 href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${data.last_updated}\\n服务端时区: ${data.timezone}')">
 ${data.last_updated}
 </a>`;
+        if (data.last_updated.includes(1970)){
+            lastUpdatedElement.innerHTML = `
+            
+            <a class="awake" 
+            title="服务器时区: ${data.timezone}" 
+            href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${data.last_updated}\\n服务端时区: ${data.timezone}')">
+            没有设备在线
+            </a>`;
+        }
     }
 }
 
