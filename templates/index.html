@@ -22,9 +22,9 @@
         <div class="card light" id="user_status">
             <h1></h1>
 
-            <h3><b>{{ env.page.user }}</b> 现在:<a id="status">{{ status['name'] }}</a></h3>
+            <h3><b>{{ env.page.user }}</b> 现在<a id="status">{{ status['name'] }}</a></h3>
             <p id="additional-info">{{ status['desc'] | safe }}</p>
-            <p id="device-status">[设备状态列表]</p>
+            <p id="device-status">正在获取设备状态</p>
 
             {% if env.util.steam_enabled %}
             <!-- (steam) Steam 状态模块 (iframe) -->
