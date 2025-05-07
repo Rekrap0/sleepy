@@ -73,17 +73,11 @@ div p {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .card {
-  border-radius: 30px;
-  padding: 2rem 1rem;
   font-size: 1.1em;
   height: 100%;
   width: 100%;
   text-align: center;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
   position: relative;
-  box-shadow: 0 8px 32px rgb(174 137 245 / 20%),
-    inset 0 0 6px 1px rgb(185 210 216 / 10%);
   transition: all 0.5s;
 }
 
@@ -108,9 +102,6 @@ div p {
   box-sizing: border-box;
 }
 @media (max-width: 700px) {
-  body {
-    touch-action: pan-y;
-  }
   .card {
     height: 100%;
     width: 100%;
