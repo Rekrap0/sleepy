@@ -139,7 +139,7 @@ ${data.last_updated}
         if (data.last_updated.includes(1970)){
             lastUpdatedElement.innerHTML = `
             
-            <a class="awake" 
+            <a class="sleep" 
             title="服务器时区: ${data.timezone}" 
             href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${data.last_updated}\\n服务端时区: ${data.timezone}')">
             没有设备在线
