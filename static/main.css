@@ -94,6 +94,11 @@ div p {
 .card table{
   margin: 0 auto;
 }
+.card table td, .card table tr{
+  padding: 6px 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 .container {
   flex: 1;
   display: flex;
@@ -101,13 +106,16 @@ div p {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  padding: 20px;
+  height: 100vh;
   box-sizing: border-box;
 }
 @media (max-width: 700px) {
   .card {
     height: 100%;
     width: 100%;
+  }
+  .card p, .card table, .card tr, .card th{
+    font-size: 11px !important;
   }
 }
 .sleeping {
