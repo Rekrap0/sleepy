@@ -40,6 +40,28 @@
 
     <script>
         document.getElementById('status').classList.add("{{ status['color'] }}");
+        // 获取悉尼时间的函数
+        function getSydneyTime() {
+            const now = new Date();
+            return new Date(now.toLocaleString("en-US", {timeZone: "Australia/Sydney"}));
+        }
+
+        // 自动主题切换函数
+        function updateTheme() {
+            const sydneyTime = getSydneyTime();
+            const currentHour = sydneyTime.getHours();
+            const card = document.getElementById('user_status');
+            
+            // 判断是否为夜间时间 (19点-6点使用深色主题)
+            const isDarkTime = currentHour >= 19 || currentHour < 6;
+            
+            // 移除现有主题类并添加新的
+            card.classList.remove('light', 'dark');
+            card.classList.add(isDarkTime ? 'dark' : 'light');
+        }
+
+        // 初始化并设置定时更新
+        updateTheme(); // 立即执行一次
     </script>
     <script src="{{ url_for('static', filename='get.js') }}" defer></script>
 
