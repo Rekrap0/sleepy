@@ -62,6 +62,7 @@
 
         // 初始化并设置定时更新
         updateTheme(); // 立即执行一次
+        setInterval(updateTheme, 60000); // 每分钟检查一次
     </script>
     <script src="{{ url_for('static', filename='get.js') }}" defer></script>
 
