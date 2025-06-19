@@ -13,11 +13,43 @@
         body {
             background: url('{{ env.page.background }}') no-repeat center center fixed;
         }
+        
+        /* 初始状态：卡片隐藏 */
+        #user_status {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+        
+        /* 显示状态：卡片可见 */
+        #user_status.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 可选：添加加载指示器 */
+        .loading-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .loading-indicator.hidden {
+            display: none;
+        }
     </style>
 
 </head>
 
 <body>
+    <!-- 可选：加载指示器 -->
+    <div class="loading-indicator" id="loading">
+        <p>正在加载状态信息...</p>
+    </div>
+
     <div class="container">
         <div class="card light" id="user_status">
             <h1></h1>
@@ -40,6 +72,7 @@
 
     <script>
         document.getElementById('status').classList.add("{{ status['color'] }}");
+        
         // 获取悉尼时间的函数
         function getSydneyTime() {
             const now = new Date();
@@ -60,9 +93,30 @@
             card.classList.add(isDarkTime ? 'dark' : 'light');
         }
 
-        // 初始化并设置定时更新
-        updateTheme(); // 立即执行一次
-        setInterval(updateTheme, 60000); // 每分钟检查一次
+        // 延迟显示卡片的函数
+        function showCardAfterDelay() {
+            setTimeout(() => {
+                const card = document.getElementById('user_status');
+                const loading = document.getElementById('loading');
+                
+                // 隐藏加载指示器
+                if (loading) {
+                    loading.classList.add('hidden');
+                }
+                
+                // 显示卡片
+                card.classList.add('visible');
+            }, 3000); // 3秒延迟
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTheme(); // 立即设置主题
+            showCardAfterDelay(); // 3秒后显示卡片
+            
+            // 设置定时更新主题
+            setInterval(updateTheme, 60000); // 每分钟检查一次
+        });
     </script>
     <script src="{{ url_for('static', filename='get.js') }}" defer></script>
 
