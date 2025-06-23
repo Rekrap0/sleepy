@@ -137,13 +137,19 @@ ${sliceText(escapedAppName, data.device_status_slice)}
     // 更新最后更新时间
     const timenow = getFormattedDate(new Date());
     if (lastUpdatedElement) {
-        lastUpdatedElement.innerHTML = `
+        /*lastUpdatedElement.innerHTML = `
 最后更新:
 <a class="awake" 
 title="服务器时区: ${data.timezone}" 
 href="javascript:alert('浏览器最后更新时间: ${timenow}\\n数据最后更新时间 (基于服务器时区): ${data.last_updated}\\n服务端时区: ${data.timezone}')">
 ${data.last_updated}
 </a>`;
+*/
+        lastUpdatedElement.innerHTML = `
+最后更新:
+<span>
+${data.last_updated}
+</span>`;
         if (data.last_updated.includes(1970)){
             lastUpdatedElement.innerHTML = `
             
@@ -390,7 +396,8 @@ async function update() {
             let errorinfo = '';
             const statusElement = document.getElementById('status');
             // --- show updating
-            document.getElementById('last-updated').innerHTML = `正在更新状态, 请稍候... <a href="javascript:location.reload();" target="_self" style="color: rgb(0, 255, 0);">刷新页面</a>`;
+            document.getElementById('last-updated').innerHTML = `正在更新状态, 请稍候... `;
+            // <a href="javascript:location.reload();" target="_self" style="color: rgb(0, 255, 0);">刷新页面</a>
             // fetch data
             fetch(baseUrl + 'query', { timeout: 10000 })
                 .then(response => response.json())
